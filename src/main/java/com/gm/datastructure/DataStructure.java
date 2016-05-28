@@ -1,5 +1,6 @@
 package com.gm.datastructure;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /*
@@ -42,7 +43,32 @@ public class DataStructure {
 
 		// Dyanamic Array solution
 		
+		// Sparse Arrays
+		Scanner in = new Scanner(System.in);
+		int numOfString = in.nextInt();
+		ArrayList<String> strArray = new ArrayList<String>();
+		in.nextLine();
+		for (int i = 0; i < numOfString; i++) {
+			strArray.add(in.nextLine());
+		}
+
+		int numOfQueries = in.nextInt();
+		ArrayList<String> queries = new ArrayList<String>();
+		in.nextLine();
+		for (int i = 0; i < numOfQueries; i++) {
+			queries.add(in.nextLine());
+		}
 		
+		ArrayList<Integer> countList = new ArrayList<Integer>();
+		for (int i = 0; i < queries.size(); i++) {
+			int count = 0;
+			for (int j = 0; j < strArray.size(); j++) {
+				if (strArray.get(j).equals(queries.get(i))) {
+					countList.add(i, count++);
+				}
+			}
+		}
+		System.out.println("Counts::"+countList);
 	}
 
 }
