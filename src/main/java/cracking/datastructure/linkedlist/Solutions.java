@@ -77,8 +77,40 @@ public class Solutions {
 		}
 	}
 
+//*****************************NOT COMPLETE YET*********************************
 	/**
 	 * 2.4) Partition a linked list around a value x, such that all nodes less
-	 * than x come before all nodes greater than or equal to x.
+	 * than x comes before all nodes greater than or equal to x.
 	 */
+	public static Node partition(Node n, int x) {
+		Node before = null;
+		Node after = null;
+		while (n.getNext() != null) {
+			Node next = n.getNext();
+			if ((Integer) n.getData() < x) {
+				n.setNext(before);
+				before = n;
+			} else {
+				
+			}
+			n = next;
+		}
+
+		if (after == null)
+			return after;
+
+		Node head = before;
+		while (before.getNext() != null) {
+			before = before.getNext();
+		}
+		before.setNext(after);
+
+		return head;
+	}
+
+	/**
+	 * 2.5)
+	 * 
+	 */
+
 }
