@@ -10,16 +10,16 @@ public class Solutions {
 	public static LinkedList lList = new LinkedList();
 
 	public static void main(String[] args) {
-		lList.add("one");
-		lList.add("two");
-		lList.add("three");
-		lList.add("three");
-		lList.add("four");
-		lList.add("four");
-		lList.add("five");
-		lList.add("six");
-		lList.add("seven");
-		lList.add("eight");
+		lList.add(1);
+		lList.add(2);
+		lList.add(3);
+		lList.add(4);
+		lList.add(5);
+		lList.add(5);
+		lList.add(6);
+		lList.add(7);
+		lList.add(7);
+		lList.add(7);
 		System.out.println(lList);
 		removeDuplicate();
 		System.out.println(lList);
@@ -31,13 +31,13 @@ public class Solutions {
 	 * {@link HashSet} other solution could be by using two iterator to check
 	 */
 	public static void removeDuplicate() {
-		HashSet<String> set = new HashSet<String>();
+		HashSet<Integer> set = new HashSet<Integer>();
 		Node current = lList.getHead();
 		while (current.getNext() != null) {
 			if (set.contains(current.getNext().getData())) {
 				current.setNext(current.getNext().getNext());
 			} else {
-				set.add((String) current.getNext().getData());
+				set.add((Integer) current.getNext().getData());
 				current = current.getNext();
 			}
 		}
@@ -81,4 +81,14 @@ public class Solutions {
 	 * 2.4) Partition a linked list around a value x, such that all nodes less
 	 * than x come before all nodes greater than or equal to x.
 	 */
+	public static void partion(int x) {
+		
+	}
+
+	/**
+	 * 2.5) Sum Lists
+	 */
+	public static void SumLists() {
+		
+	}
 }
