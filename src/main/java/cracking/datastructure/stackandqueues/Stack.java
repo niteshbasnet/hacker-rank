@@ -1,9 +1,9 @@
 package cracking.datastructure.stackandqueues;
 
-import cracking.datastructure.linkedlist.core.Node;
+import cracking.datastructure.linkedlist.core.ListNode;
 
 public class Stack {
-	Node top;
+	ListNode top;
 
 	public Object pop() {
 		if (top != null) {
@@ -14,11 +14,11 @@ public class Stack {
 		return null;
 	}
 
-	public void push(Object item) {
-		Node n = new Node(item);
+	public void push(Object item) {/*
+		ListNode n = new ListNode(item);
 		n.setNext(top);
 		top = n;
-	}
+	*/}
 
 	public Object peek() {
 		return top.getData();

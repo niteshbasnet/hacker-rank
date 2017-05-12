@@ -1,10 +1,10 @@
 package cracking.datastructure.stackandqueues;
 
-import cracking.datastructure.linkedlist.core.Node;
+import cracking.datastructure.linkedlist.core.ListNode;
 
 public class Queue {
-	Node first;
-	Node last;
+	ListNode first;
+	ListNode last;
 
 	public Object dequeue() {
 		if (first != null) {
@@ -15,15 +15,15 @@ public class Queue {
 		return null;
 	}
 
-	public void enqueue(Object item) {
+	public void enqueue(Object item) {/*
 		if (first == null) {
-			last = new Node(item);
+			last = new ListNode(item);
 			first = last;
 		} else {
-			last.setNext(new Node(item));
+			last.setNext(new ListNode(item));
 			last = last.getNext();
 		}
 
-	}
+	*/}
 
 }

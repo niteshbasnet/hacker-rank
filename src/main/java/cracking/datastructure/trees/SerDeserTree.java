@@ -1,9 +1,14 @@
-import cracking.datastructure.linkedlist.core.BinaryTree.TreeNode;
+package cracking.datastructure.trees;
 
 public class SerDeserTree {
+	
+	public static void main(String[] args) {
+		
+	}
 
 	// Encodes a tree to a single string.
 	public String serialize(TreeNode root) {
+
 		return null;
 	}
 

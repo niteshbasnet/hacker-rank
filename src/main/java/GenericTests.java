@@ -6,8 +6,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import cracking.datastructure.linkedlist.core.Node;
-import cracking.datastructure.stackandqueues.Stack;
+import cracking.datastructure.linkedlist.core.LinkedList;
+import cracking.datastructure.linkedlist.core.ListNode;
+import cracking.datastructure.trees.TreeNode;
 
 public class GenericTests {
 
@@ -26,7 +27,7 @@ public class GenericTests {
 //		String[] a = { "a", "b", "c", "d", "e" };
 //		String[] b = { "b", "d", "e", "c", "a" };
 //		System.out.println("Factorial of 5::" + factorialNonRecursive(5));
-		System.out.println("Factorial of 5::" + factorialRecursive(5));
+//		System.out.println("Factorial of 5::" + factorialRecursive(5));
 //		System.out.println("5th Fibonacci::" + fibonacciNonRecursive(4));
 //		System.out.println("5th Fibonacci::" + fibonacciRecursive(4));
 //		
@@ -53,6 +54,37 @@ public class GenericTests {
 		
 //		int matrix[][]= {{7,4,1,5},{8,5,2,3},{9,6,3,6},{3,10,6,3}};
 //		rotateMatrix(matrix);
+		
+//		String s = "aabbcc";
+//		String t = "bbacac";
+//		System.out.println(isAnagram(s, t));
+		
+		LinkedList list = new LinkedList();
+		list.add(1);
+		list.add(2);
+		list.add(3);
+		list.add(2);
+		list.add(3);
+		list.add(2);
+		list.add(1);
+		System.out.println("The linked list is palindrome::"+isLinkedListPalindrome(list.getHead().getNext()));
+		
+		LinkedList l1 = new LinkedList();
+		LinkedList l2 = new LinkedList();
+		
+		l1.add(2);
+		l1.add(4);
+		l1.add(3);
+		
+		l2.add(5);
+		l2.add(6);
+		l2.add(4);
+
+		ListNode sumNode = addTwoNumbers(l1.getHead().getNext(), l2.getHead().getNext());
+		while (sumNode != null) {
+			System.out.println(sumNode.getData());
+			sumNode = sumNode.getNext();
+		}
 		
 	}
 
@@ -221,6 +253,7 @@ public class GenericTests {
 			if (numbersMap.containsKey(targetSum - numbers[i])) {
 				result[0] = numbersMap.get(targetSum - numbers[i]);
 				result[1] = i;
+				return result;
 			}
 			numbersMap.put(numbers[i], i);
 		}
@@ -289,20 +322,6 @@ public class GenericTests {
 		}
 		return maxSoFar;
 	}
-	
-	public static ListNode reverseList(ListNode head) {
-		
-		return null;
-	}
-
-	public class ListNode {
-		int val;
-		ListNode next;
-
-		ListNode(int x) {
-			val = x;
-		}
-	}
 
 	private static int n;
 	private static int m;
@@ -354,9 +373,143 @@ public class GenericTests {
     
 	}
 	
-	public static void serializeDeserializeTree(Node node){
-		
+	public static ListNode mergeTwoLists(ListNode n1, ListNode n2) {
+		if (n1 == null)
+			return n2;
+		if (n2 == null)
+			return n1;
+
+		ListNode mergeHead;
+		if (n1.getData() < n2.getData()) {
+			mergeHead = n1;
+			mergeHead.setNext(mergeTwoLists(n1.getNext(), n2));
+		} else {
+			mergeHead = n2;
+			mergeHead.setNext(mergeTwoLists(n1, n2.getNext()));
+		}
+		return mergeHead;
+	}
+
+	public static int firstUniqueChar(String s) {
+		int[] freq = new int[26];
+		for (int i = 0; i < s.length(); i++) {
+			freq[s.charAt(i) - 'a']++;
+		}
+
+		for (int i = 0; i < s.length(); i++) {
+			if (freq[s.charAt(i) - 'a'] == 1)
+				return i;
+		}
+		return -1;
+	}
+
+	public static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+		if (root.getKey() > p.getKey() && root.getKey() > q.getKey()) {
+			return lowestCommonAncestor(root.getRight(), p, q);
+		} else if (root.getKey() < p.getKey() && root.getKey() < q.getKey()) {
+			return lowestCommonAncestor(root.getLeft(), p, q);
+		} else {
+			return root;
+		}
+	}
+
+	public static boolean isAnagram(String s, String t) {
+		int freq[] = new int[26];
+		for (int i = 0; i < s.length(); i++)
+			freq[s.charAt(i) - 'a']++;
+		for (int i = 0; i < t.length(); i++)
+			freq[t.charAt(i) - 'a']--;
+		for (int i : freq)
+			if (i != 0)
+				return false;
+		return true;
 	}
 	
+	public static ListNode reverseLinkedList(ListNode head){
+		ListNode current = head;
+		ListNode previous = null;
+		ListNode next = null;
+		while(current!=null){
+			next = current.getNext();
+			current.setNext(previous);
+			previous = current;
+			current = next;
+		}
+		return previous;
+	}
+
+	public static boolean isLinkedListPalindrome(ListNode head) {
+		ListNode p = head;
+		ListNode q = head;
+		while (p != null && p.getNext() != null) {
+			p = p.getNext().getNext(); 
+			q = q.getNext(); 
+		}
+
+		if (p != null)
+			q = q.getNext();
+
+ 		q = reverseLinkedList(q.getNext());
+		p = head;
+
+		while (q != null) {
+			if (p.getData() != q.getData()){
+				System.out.println("p.val"+p.getData());
+				System.out.println("q.val"+q.getData());
+				return false;
+			}
+			p = p.getNext();
+			q = q.getNext();
+		}
+
+		return true;
+	}
 	
+	public static boolean hasLinkedListCycle(ListNode head) {
+		if (head == null)
+			return false;
+		ListNode a = head;
+		ListNode b = head;
+		while (a != null && a.getNext() != null) {
+			a = a.getNext();
+			b = b.getNext().getNext();
+			if (a == b)
+				return false;
+		}
+		return true;		
+	}
+
+	public static boolean searchMatrix(int[][] matrix, int target) {
+		if (matrix == null || matrix.length < 1 || matrix[0].length < 1)
+			return false;
+		int row = 0;
+		int col = matrix[0].length - 1;
+		while (col >= 0 && row <= matrix.length - 1) {
+			if (target == matrix[row][col])
+				return true;
+			else if (target < matrix[row][col])
+				col--;
+			else if (target > matrix[row][col])
+				row++;
+		}
+		return false;
+	}
+
+	public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+		ListNode prev = new ListNode(0);
+		ListNode head = prev;
+		int carry = 0;
+		while (l1 != null || l2 != null || carry != 0) {
+			ListNode cur = new ListNode(0);
+			int sum = ((l2 == null) ? 0 : l2.getData()) + ((l1 == null) ? 0 : l1.getData()) + carry;
+			cur.setData(sum % 10);
+			carry = sum / 10;
+			prev.setNext(cur);
+			prev = cur;
+
+			l1 = (l1 == null) ? l1 : l1.getNext();
+			l2 = (l2 == null) ? l2 : l2.getNext();
+		}
+		return head.getNext();
+	}
 }
