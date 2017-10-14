@@ -4,15 +4,59 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 import java.util.Set;
+import java.util.Stack;
 
-import cracking.datastructure.linkedlist.core.LinkedList;
 import cracking.datastructure.linkedlist.core.ListNode;
 import cracking.datastructure.trees.TreeNode;
 
 public class GenericTests {
 
+	public static int divide(int a, int b){
+		int c = -1;
+		try {
+			c = a / b;
+		} catch (Exception e) {
+			System.out.println("Exception");
+			
+		} finally{
+			System.out.println("Finally");
+		}
+		return c;
+	}
+	
 	public static void main(String[] args) {
+//		divide(4,0);
+		
+		
+		String line;
+        Scanner stdin = new Scanner(System.in);
+        while(stdin.hasNextLine() && !( line = stdin.nextLine() ).equals( "" ))
+        {
+            String[] tokens = line.split(" ");
+            System.out.println(Integer.parseInt(tokens[0]));
+            System.out.println(Integer.parseInt(tokens[1]));
+//            System.out.println(Math.pow(Integer.parseInt(tokens[0]), Integer.parseInt(tokens[1])));
+        }
+        try {
+			
+		} catch (Exception e) {
+			System.out.println(e.);
+		}
+        stdin.close();
+        
+        
+//		Scanner reader = new Scanner(System.in);  // Reading from System.in
+//		System.out.println("Enter a number: ");
+//		int n = reader.nextInt(); // Scans the next token of the input as an int.
+//		System.out.println(n);
+//		String a = reader.nextLine();
+//		System.out.println(a);
+		//once finished
+//		reader.close(); 
+		
+		
 		// System.out.println(reverseRecursive("nitesh"));
 		// System.out.println(reverseString("My name is Nitesh "));
 //		int[] nums = { 1, 1, 1, 2, 3, 6, 6, 6, 7, 7, 7 };
@@ -59,32 +103,32 @@ public class GenericTests {
 //		String t = "bbacac";
 //		System.out.println(isAnagram(s, t));
 		
-		LinkedList list = new LinkedList();
-		list.add(1);
-		list.add(2);
-		list.add(3);
-		list.add(2);
-		list.add(3);
-		list.add(2);
-		list.add(1);
-		System.out.println("The linked list is palindrome::"+isLinkedListPalindrome(list.getHead().getNext()));
-		
-		LinkedList l1 = new LinkedList();
-		LinkedList l2 = new LinkedList();
-		
-		l1.add(2);
-		l1.add(4);
-		l1.add(3);
-		
-		l2.add(5);
-		l2.add(6);
-		l2.add(4);
-
-		ListNode sumNode = addTwoNumbers(l1.getHead().getNext(), l2.getHead().getNext());
-		while (sumNode != null) {
-			System.out.println(sumNode.getData());
-			sumNode = sumNode.getNext();
-		}
+//		LinkedList list = new LinkedList();
+//		list.add(1);
+//		list.add(2);
+//		list.add(3);
+//		list.add(2);
+//		list.add(3);
+//		list.add(2);
+//		list.add(1);
+//		System.out.println("The linked list is palindrome::"+isLinkedListPalindrome(list.getHead().getNext()));
+//		
+//		LinkedList l1 = new LinkedList();
+//		LinkedList l2 = new LinkedList();
+//		
+//		l1.add(2);
+//		l1.add(4);
+//		l1.add(3);
+//		
+//		l2.add(5);
+//		l2.add(6);
+//		l2.add(4);
+//
+//		ListNode sumNode = addTwoNumbers(l1.getHead().getNext(), l2.getHead().getNext());
+//		while (sumNode != null) {
+//			System.out.println(sumNode.getData());
+//			sumNode = sumNode.getNext();
+//		}
 		
 	}
 
@@ -512,4 +556,83 @@ public class GenericTests {
 		}
 		return head.getNext();
 	}
+
+	public class Interval {
+		int start;
+		int end;
+
+		Interval() {
+			start = 0;
+			end = 0;
+		}
+
+		Interval(int s, int e) {
+			start = s;
+			end = e;
+		}
+	}
+
+	public static boolean canAttendMeetings(Interval[] intervals) {
+		
+		return false;
+	}
+	
+	public static void moveZeroes(int[] nums){
+		
+	}
+
+    static String findNumber(int[] arr, int k) {
+        
+        for(int i =0; i < arr.length;i++){
+            if(arr[i]==k){
+                System.out.println("YES");
+                return "YES";
+            } else{
+                System.out.println("NO");
+                return "NO";
+            }
+        }
+        return null;
+    }
+
+	static int[] oddNumbers(int l, int r) {
+        List<Integer> list = new ArrayList<Integer>();
+        
+		for (int i = l, j = 0; i <= r; i++) {
+			if (i % 2 != 0)
+				list.add(i);
+		}
+        Integer[] result = list.toArray(new Integer[list.size()]);
+        int[] abc = new int[result.length];
+        for (int i = 0; i < result.length; i++) {
+			abc[i]= result[i];
+		}
+		return abc;
+    }
+
+    //static String[] braces(String[] values) {
+//        Scanner reader = new Scanner(System.in);
+//        System.out.println("Enter number of inputs");
+//        int n = reader.nextInt();
+//        for(int i = 0 ; i < n; i++){
+//            String[i] braces = reader.nextLine();
+//        }
+        
+//		String[] result = new String[values.length];
+//		for (int j = 0; j < values.length; j++) {
+//			result[j] = "YES";
+//			Stack<Character> stack = new Stack<Character>();
+//			for (char c : values[j].toCharArray()) {
+//				if (c == '(')
+//					stack.push(')');
+//				else if (c == '{')
+//					stack.push('}');
+//				else if (c == '[')
+//					stack.push(']');
+//				else if (stack.isEmpty() || stack.pop() != c)
+//					result[j] = "NO";
+//			}
+//		}
+
+   // }
 }
