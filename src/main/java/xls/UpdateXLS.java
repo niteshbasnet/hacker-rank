@@ -1,4 +1,4 @@
-import com.gm.utils.XlsManipulator;
+package xls;
 
 public class UpdateXLS {
 	public static void main(String[] args) throws Exception {

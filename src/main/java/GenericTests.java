@@ -29,6 +29,8 @@ public class GenericTests {
 	public static void main(String[] args) {
 //		divide(4,0);
 		
+		String abc = "abaabc";
+		
 		
 		String line;
         Scanner stdin = new Scanner(System.in);
@@ -42,7 +44,7 @@ public class GenericTests {
         try {
 			
 		} catch (Exception e) {
-			System.out.println(e.);
+			System.out.println();
 		}
         stdin.close();
         
@@ -610,6 +612,7 @@ public class GenericTests {
 		return abc;
     }
 
+	
     //static String[] braces(String[] values) {
 //        Scanner reader = new Scanner(System.in);
 //        System.out.println("Enter number of inputs");

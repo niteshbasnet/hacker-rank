@@ -1,5 +1,4 @@
 import java.util.Arrays;
-import coi.arraysandstrings.Solution;
 
 public class Codility {
 
