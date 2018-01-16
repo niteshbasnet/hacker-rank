@@ -1,4 +1,4 @@
-package cracking.datastructure.stackandqueues;
+package cracking.datastructure.stackandqueues.core;
 
 import cracking.datastructure.linkedlist.core.ListNode;
 

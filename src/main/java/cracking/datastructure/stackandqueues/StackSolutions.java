@@ -1,5 +1,7 @@
 package cracking.datastructure.stackandqueues;
 
+import cracking.datastructure.stackandqueues.core.Stack;
+
 public class StackSolutions {
 
 /**
