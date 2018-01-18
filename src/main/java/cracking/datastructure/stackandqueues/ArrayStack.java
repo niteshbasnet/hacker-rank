@@ -1,4 +1,4 @@
-package cracking.datastructure.stackandqueues.core;
+package cracking.datastructure.stackandqueues;
 
 /**
  * 3.1) Single array for 3 fixed size stacks

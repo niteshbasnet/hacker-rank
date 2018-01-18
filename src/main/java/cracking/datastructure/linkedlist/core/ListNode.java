@@ -1,25 +1,25 @@
 package cracking.datastructure.linkedlist.core;
 
-public class ListNode {
+public class ListNode<T extends Object> {
 
 	ListNode next = null;
-	int data;
+	T data;
 
-	public ListNode(int d) {
+	public ListNode(T d) {
 		this.next = null;
 		this.data = d;
 	}
 
-	public ListNode(ListNode n, int d) {
+	public ListNode(ListNode n, T d) {
 		this.next = n;
 		this.data = d;
 	}
 
-	public int getData() {
+	public T getData() {
 		return this.data;
 	}
 
-	public int setData(int d) {
+	public T setData(T d) {
 		return this.data = d;
 	}
 

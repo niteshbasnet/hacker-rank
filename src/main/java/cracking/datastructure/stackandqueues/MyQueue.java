@@ -1,6 +1,8 @@
-package cracking.datastructure.stackandqueues.core;
+package cracking.datastructure.stackandqueues;
 
 import org.apache.log4j.Logger;
+
+import cracking.datastructure.stackandqueues.core.Stack;
 
 public class MyQueue {
 	final static Logger logger = Logger.getLogger(MyQueue.class);
