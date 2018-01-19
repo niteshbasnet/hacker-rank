@@ -1,16 +1,16 @@
 package cracking.datastructure.linkedlist.core;
 
-public class ListNode<T extends Object> {
+public class Node<T extends Object> {
 
-	ListNode next = null;
+	Node<T> next = null;
 	T data;
 
-	public ListNode(T d) {
+	public Node(T d) {
 		this.next = null;
 		this.data = d;
 	}
 
-	public ListNode(ListNode n, T d) {
+	public Node(Node<T> n, T d) {
 		this.next = n;
 		this.data = d;
 	}
@@ -23,11 +23,11 @@ public class ListNode<T extends Object> {
 		return this.data = d;
 	}
 
-	public ListNode getNext() {
+	public Node<T> getNext() {
 		return this.next;
 	}
 
-	public void setNext(ListNode next) {
+	public void setNext(Node<T> next) {
 		this.next = next;
 	}
 }

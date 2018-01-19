@@ -3,7 +3,7 @@ package cracking.datastructure.linkedlist;
 import java.util.HashSet;
 
 import cracking.datastructure.linkedlist.core.LinkedList;
-import cracking.datastructure.linkedlist.core.ListNode;
+import cracking.datastructure.linkedlist.core.Node;
 
 public class Solutions {
 
@@ -32,7 +32,7 @@ public class Solutions {
 	 */
 	public static void removeDuplicate() {
 		HashSet<Integer> set = new HashSet<Integer>();
-		ListNode current = lList.getHead();
+		Node current = lList.getHead();
 		while (current.getNext() != null) {
 			if (set.contains(current.getNext().getData())) {
 				current.setNext(current.getNext().getNext());
@@ -54,8 +54,8 @@ public class Solutions {
 	 * 2.2) Return kth element from last
 	 */
 	public static void getKthToLast(int k) {
-		ListNode current = lList.getHead();
-		ListNode kthNode = current;
+		Node current = lList.getHead();
+		Node kthNode = current;
 		for (int i = 0; i < k; i++) {
 			kthNode = kthNode.getNext();
 		}
@@ -70,7 +70,7 @@ public class Solutions {
 	/**
 	 * 2.3) Delete Middle Node
 	 */
-	public static void deleteNode(ListNode n) {
+	public static void deleteNode(Node n) {
 		if (n != null || n.getNext() != null) {
 			n.setData(n.getNext().getData());
 			n.setNext(n.getNext().getNext());

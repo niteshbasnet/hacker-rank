@@ -1,25 +1,25 @@
 package cracking.datastructure.linkedlist.core;
 
-public class LinkedList {
+public class LinkedList<T extends Object> {
 
-	ListNode head;
+	Node<T> head;
 	int count;
 
 	public LinkedList() {
 
 	}
 
-	public LinkedList(ListNode n) {
+	public LinkedList(Node<T> n) {
 		this.head = n;
 		this.count = 0;
 	}
 
-	public void add(int data) {
+	public void add(T data) {
 		if (head == null) {
-			this.head = new ListNode(data);
+			this.head = new Node<T>(data);
 		}
-		ListNode tmp = new ListNode(data);
-		ListNode current = this.head;
+		Node<T> tmp = new Node<T>(data);
+		Node<T> current = this.head;
 		while (current.getNext() != null) {
 			current = current.getNext();
 		}
@@ -31,7 +31,7 @@ public class LinkedList {
 		if (index < 0 || index > size()) {
 			return false;
 		}
-		ListNode current = head;
+		Node<T> current = head;
 
 		if (head != null) {
 			for (int i = 0; i < index; i++) {
@@ -47,24 +47,24 @@ public class LinkedList {
 		return false;
 	}
 
-	public int get(int index) {
+	public T get(int index) {
 		if (index < 0)
-			return 0;
-		ListNode current = null;
+			return null;
+		Node<T> current = null;
 
 		if (head != null) {
 			current = head.getNext();
 			for (int i = 0; i < index; i++) {
 				if (current.getNext() == null)
-					return 0;
+					return null;
 				current = current.getNext();
 			}
 			return current.getData();
 		}
-		return 0;
+		return null;
 	}
 
-	public ListNode getHead() {
+	public Node<T> getHead() {
 		return this.head;
 	}
 
@@ -76,7 +76,7 @@ public class LinkedList {
 		String output = "";
 
 		if (head != null) {
-			ListNode current = head.getNext();
+			Node<T> current = head.getNext();
 			while (current != null) {
 				output += "[" + current.getData() + "]";
 				current = current.getNext();
