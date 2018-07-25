@@ -2,9 +2,9 @@ package cracking.datastructure.trees;
 
 public class TreeNode {
 
-	private int key;
-	private TreeNode left;
-	private TreeNode right;
+	int key;
+	TreeNode left;
+	TreeNode right;
 
 	TreeNode(int key) {
 		this.key = key;

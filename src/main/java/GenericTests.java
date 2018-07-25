@@ -4,9 +4,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 import java.util.Set;
-import java.util.Stack;
 
 import cracking.datastructure.linkedlist.core.Node;
 import cracking.datastructure.trees.TreeNode;
@@ -27,25 +25,28 @@ public class GenericTests {
 	}
 
 	public static void main(String[] args) {
+
+		String z = "this is test string";
+		System.out.println(reverseStringCharWay(z));
 		// divide(4,0);
-//
-//		String abc = "abaabc";
-//
-//		String line;
-//		Scanner stdin = new Scanner(System.in);
-//		while (stdin.hasNextLine() && !(line = stdin.nextLine()).equals("")) {
-//			String[] tokens = line.split(" ");
-//			System.out.println(Integer.parseInt(tokens[0]));
-//			System.out.println(Integer.parseInt(tokens[1]));
-//			// System.out.println(Math.pow(Integer.parseInt(tokens[0]),
-//			// Integer.parseInt(tokens[1])));
-//		}
-//		try {
-//
-//		} catch (Exception e) {
-//			System.out.println();
-//		}
-//		stdin.close();
+		//
+		// String abc = "abaabc";
+		//
+		// String line;
+		// Scanner stdin = new Scanner(System.in);
+		// while (stdin.hasNextLine() && !(line = stdin.nextLine()).equals("")) {
+		// String[] tokens = line.split(" ");
+		// System.out.println(Integer.parseInt(tokens[0]));
+		// System.out.println(Integer.parseInt(tokens[1]));
+		// // System.out.println(Math.pow(Integer.parseInt(tokens[0]),
+		// // Integer.parseInt(tokens[1])));
+		// }
+		// try {
+		//
+		// } catch (Exception e) {
+		// System.out.println();
+		// }
+		// stdin.close();
 
 		// Scanner reader = new Scanner(System.in); // Reading from System.in
 		// System.out.println("Enter a number: ");
@@ -136,20 +137,37 @@ public class GenericTests {
 		// sumNode = sumNode.getNext();
 		// }
 
-		
-		int a[] = new int [10]; 
-		a[0] = 1;
-		a[1] = 2;
-		a[2] = 3;
-		a[3] = 4;
-		a[4] = 5;
-		
-		int b[] = {6,7,8,9};
-		
-		int m[] = mergeSortedArray(a, 5, b, 4);
-		
-		for (int i : m) {
-			System.out.println(i);
+		// int a[] = new int[10];
+		// a[0] = 1;
+		// a[1] = 2;
+		// a[2] = 3;
+		// a[3] = 4;
+		// a[4] = 5;
+		//
+		// int b[] = { 6, 7, 8, 9 };
+		//
+		// int m[] = mergeSortedArray(a, 5, b, 4);
+		//
+		// for (int i : m) {
+		// System.out.println(i);
+		// }
+
+		String a = "this is two one two this";
+		getUniqueStringFromRepeatedStrings(a);
+	}
+
+	public static void getUniqueStringFromRepeatedStrings(String s) {
+		Map<String, Integer> frequency = new HashMap<String, Integer>();
+		String[] words = s.split("\\s+");
+		for (String word : words) {
+			Integer oldCount = frequency.get(word);
+			if (oldCount == null)
+				oldCount = 0;
+			frequency.put(word, oldCount + 1);
+		}
+		System.out.println(frequency.get("one"));
+		for (String key : frequency.keySet()) {
+			System.out.println(key);
 		}
 	}
 
@@ -190,8 +208,7 @@ public class GenericTests {
 			return 0;
 		if (n == 1)
 			return 1;
-		return fibonacciNonRecursive(n - 1) + fibonacciNonRecursive(n - 2);
-
+		return fibonacciRecursive(n - 1) + fibonacciRecursive(n - 2);
 	}
 
 	public static String reverseRecursive(String str) {
@@ -207,6 +224,17 @@ public class GenericTests {
 			reverse.append(parts[i] + " ");
 		}
 		return reverse.toString() + parts[0];
+	}
+
+	public static String reverseStringCharWay(String s) {
+		char[] charArray = s.toCharArray();
+		char[] result = new char[charArray.length];
+
+		for (int i = charArray.length - 1, j = 0; i >= 0; i--, j++) {
+			result[j] = charArray[i];
+		}
+
+		return new String(result);
 	}
 
 	public static int ladderLength(String beginWord, String endWord, Set<String> wordList) {
@@ -261,7 +289,7 @@ public class GenericTests {
 		Map<Integer, Integer> frequencyMap = new HashMap<Integer, Integer>();
 
 		for (int n : nums) {
-			frequencyMap.put(n, frequencyMap.getOrDefault(n, 0) + 1);
+//			frequencyMap.put(n, frequencyMap.getOrDefault(n, 0) + 1);
 		}
 
 		for (int key : frequencyMap.keySet()) {
@@ -443,13 +471,12 @@ public class GenericTests {
 	}
 
 	/*
-	 * public static Node mergeTwoLists(Node n1, Node n2) { if (n1 == null)
-	 * return n2; if (n2 == null) return n1;
+	 * public static Node mergeTwoLists(Node n1, Node n2) { if (n1 == null) return
+	 * n2; if (n2 == null) return n1;
 	 * 
 	 * Node<> mergeHead; if (n1.getData() < n2.getData()) { mergeHead = n1;
-	 * mergeHead.setNext(mergeTwoLists(n1.getNext(), n2)); } else { mergeHead =
-	 * n2; mergeHead.setNext(mergeTwoLists(n1, n2.getNext())); } return
-	 * mergeHead; }
+	 * mergeHead.setNext(mergeTwoLists(n1.getNext(), n2)); } else { mergeHead = n2;
+	 * mergeHead.setNext(mergeTwoLists(n1, n2.getNext())); } return mergeHead; }
 	 */
 
 	public static int firstUniqueChar(String s) {
@@ -558,14 +585,14 @@ public class GenericTests {
 	}
 
 	/*
-	 * public static Node addTwoNumbers(Node l1, Node l2) { Node prev = new
-	 * Node(0); Node head = prev; int carry = 0; while (l1 != null || l2 != null
-	 * || carry != 0) { Node cur = new Node(0); int sum = ((l2 == null) ? 0 :
-	 * l2.getData()) + ((l1 == null) ? 0 : l1.getData()) + carry;
-	 * cur.setData(sum % 10); carry = sum / 10; prev.setNext(cur); prev = cur;
+	 * public static Node addTwoNumbers(Node l1, Node l2) { Node prev = new Node(0);
+	 * Node head = prev; int carry = 0; while (l1 != null || l2 != null || carry !=
+	 * 0) { Node cur = new Node(0); int sum = ((l2 == null) ? 0 : l2.getData()) +
+	 * ((l1 == null) ? 0 : l1.getData()) + carry; cur.setData(sum % 10); carry = sum
+	 * / 10; prev.setNext(cur); prev = cur;
 	 * 
-	 * l1 = (l1 == null) ? l1 : l1.getNext(); l2 = (l2 == null) ? l2 :
-	 * l2.getNext(); } return head.getNext(); }
+	 * l1 = (l1 == null) ? l1 : l1.getNext(); l2 = (l2 == null) ? l2 : l2.getNext();
+	 * } return head.getNext(); }
 	 */
 
 	public class Interval {
@@ -636,7 +663,7 @@ public class GenericTests {
 			A[k--] = A[i] > B[j] ? A[i--] : B[j--];
 		while (j > -1)
 			A[k--] = B[j--];
-		
+
 		return A;
 	}
 
