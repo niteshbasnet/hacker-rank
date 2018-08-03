@@ -3,13 +3,13 @@ package cracking.datastructure.trees;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class BinarySearchTreeOne<T extends Comparable<T>> {
+public class BinarySearchTree<T extends Comparable<T>> {
 
 	private T data;
-	private BinarySearchTreeOne<T> left;
-	private BinarySearchTreeOne<T> right;
+	private BinarySearchTree<T> left;
+	private BinarySearchTree<T> right;
 
-	public BinarySearchTreeOne(T data) {
+	public BinarySearchTree(T data) {
 		this.data = data;
 		this.left = null;
 		this.right = null;
@@ -21,12 +21,12 @@ public class BinarySearchTreeOne<T extends Comparable<T>> {
 			if (this.left != null)
 				this.left.addNode(newData);
 			else
-				this.left = new BinarySearchTreeOne<T>(newData);
+				this.left = new BinarySearchTree<T>(newData);
 		} else {
 			if (this.right != null)
 				this.right.addNode(newData);
 			else
-				this.right = new BinarySearchTreeOne<T>(newData);
+				this.right = new BinarySearchTree<T>(newData);
 		}
 	}
 
