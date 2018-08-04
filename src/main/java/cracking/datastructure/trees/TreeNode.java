@@ -2,38 +2,13 @@ package cracking.datastructure.trees;
 
 public class TreeNode {
 
-	int key;
-	TreeNode left;
-	TreeNode right;
+	public int key;
+	public TreeNode left;
+	public TreeNode right;
 
-	TreeNode(int key) {
+	public TreeNode(int key) {
 		this.key = key;
 		right = null;
 		left = null;
 	}
-
-	public int getKey() {
-		return key;
-	}
-
-	public void setKey(int key) {
-		this.key = key;
-	}
-
-	public TreeNode getLeft() {
-		return left;
-	}
-
-	public void setLeft(TreeNode left) {
-		this.left = left;
-	}
-
-	public TreeNode getRight() {
-		return right;
-	}
-
-	public void setRight(TreeNode right) {
-		this.right = right;
-	}
-
 }
