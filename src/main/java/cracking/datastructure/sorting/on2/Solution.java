@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Hashtable;
 import java.util.List;
-
-import org.apache.kahadb.index.ListNode;
+import java.util.Map;
 
 import cracking.datastructure.linkedlist.core.Node;
+import cracking.datastructure.trees.BinarySearchTree;
+import cracking.datastructure.trees.TreeNode;
 
 public class Solution {
 
@@ -249,6 +249,29 @@ public class Solution {
 		}
 	}
 
+	public void validAnagram() {
+		String s1 = "anagram";
+		String s2 = "nagaram";
+
+		if (s1.length() != s2.length()) {
+			System.out.println(false);
+		} else {
+			char[] freq = new char[26];
+
+			for (int i = 0; i < s1.length(); i++) {
+				freq[s1.charAt(i) - 'a']++;
+				freq[s2.charAt(i) - 'a']--;
+			}
+
+			for (int i = 0; i < freq.length; i++) {
+				if (freq[i] > 0) {
+					System.out.println(false);
+					break;
+				}
+			}
+			System.out.println(true);
+		}
+	}
 
 	public int getSum(int a, int b) {
 		if (b == 0) {
@@ -260,6 +283,92 @@ public class Solution {
 		return getSum(sum, carry);
 	}
 
+	public void containsDuplicate() {
+		int nums[] = { 1, 2, 3, 4 };
+
+		Map<Integer, Integer> freq = new HashMap<Integer, Integer>();
+		for (int i = 0; i < nums.length; i++) {
+			if (!freq.containsKey(nums[i]))
+				freq.put(nums[i], 1);
+			else
+				freq.put(nums[i], freq.get(nums[i] + 1));
+		}
+
+		for (Map.Entry<Integer, Integer> entry : freq.entrySet()) {
+			if (entry.getValue() > 1) {
+				System.out.println(true);
+				break;
+			}
+		}
+		System.out.println(false);
+	}
+
+	public void missingNumber() {
+		int[] nums = { 9, 6, 4, 2, 3, 5, 7, 0, 1 };
+		int sum = 0;
+		int missing = 0;
+
+		for (int i = 0; i <= nums.length; i++) {
+			sum += i;
+			if (i < nums.length)
+				missing += nums[i];
+		}
+		System.out.println(sum - missing);
+	}
+
+	public void intersect() {
+		int[] nums1 = { 1, 2, 3, 2, 3 };
+		int[] nums2 = { 3, 2, 3, 2 };
+
+		Map<Integer, Integer> counter = new HashMap<Integer, Integer>();
+		ArrayList<Integer> result = new ArrayList<Integer>();
+
+		for (int i = 0; i < nums1.length; i++) {
+			if (!counter.containsKey(nums1[i]))
+				counter.put(nums1[i], 1);
+			else
+				counter.put(nums1[i], counter.get(nums1[i]) + 1);
+		}
+
+		for (int i = 0; i < nums2.length; i++) {
+			if (counter.containsKey(nums2[i]) && counter.get(nums2[i]) > 0) {
+				result.add(nums2[i]);
+				counter.put(nums2[i], counter.get(nums2[i]) - 1);
+			}
+		}
+		for (Integer integer : result) {
+			System.out.println(integer);
+		}
+	}
+
+	public void createBinaryTree() {
+		int nums[] = { -10, -3, 5, 9 };
+		BinarySearchTree<Integer> bst = new BinarySearchTree<Integer>(-0);
+		for (int i = 0; i < nums.length; i++) {
+			bst.addNode(nums[i]);
+		}
+		System.out.println("---------BST--------");
+		bst.traverseInOrder();
+		System.out.println("---------BST--------");
+	}
+
+	public void sortedArrayToBST() {
+		int[] num = { -10, -3, 0, 5, 9 };
+		TreeNode head = helperToArrayToBST(num, 0, num.length - 1);
+		
+	}
+
+	public TreeNode helperToArrayToBST(int[] num, int start, int end) {
+		int mid = (start + end) / 2;
+		TreeNode node = new TreeNode(mid);
+		node.left = helperToArrayToBST(num, start, mid - 1);
+		node.right = helperToArrayToBST(num, mid + 1, end);
+		return node;
+
+	}
+
+	
+	
 	public static void main(String[] args) {
 		Solution solution = new Solution();
 		solution.toLowerCase();
@@ -294,6 +403,12 @@ public class Solution {
 		solution.moveZeroesToEnd();
 		System.out.println();
 		System.out.println(solution.getSum(1, 3));
+
+		solution.validAnagram();
+		solution.containsDuplicate();
+		solution.missingNumber();
+		solution.createBinaryTree();
+		solution.intersect();
 	}
 
 }
