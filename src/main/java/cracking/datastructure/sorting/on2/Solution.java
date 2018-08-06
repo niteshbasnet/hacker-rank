@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import cracking.datastructure.linkedlist.core.Node;
 import cracking.datastructure.trees.BinarySearchTree;
@@ -355,7 +356,7 @@ public class Solution {
 	public void sortedArrayToBST() {
 		int[] num = { -10, -3, 0, 5, 9 };
 		TreeNode head = helperToArrayToBST(num, 0, num.length - 1);
-		
+
 	}
 
 	public TreeNode helperToArrayToBST(int[] num, int start, int end) {
@@ -367,8 +368,58 @@ public class Solution {
 
 	}
 
-	
-	
+	public void isHappy(int n) {
+		int x, sum;
+		Set<Integer> inLoop = new HashSet<Integer>();
+
+		while (inLoop.add(n)) {
+			sum = 0;
+			while (n > 0) {
+				x = n % 10;
+				n = n / 10;
+				sum += x * x;
+			}
+			if (sum == 1) {
+				System.out.println(true);
+				break;
+			} else
+				n = sum;
+
+		}
+		System.out.println(false);
+	}
+
+	/*
+	 * public void productExceptSelf() { int[] nums = { 1, 2, 3, 4 }; int product;
+	 * List<Integer> result = new ArrayList<Integer>(); for (int i = 0; i <
+	 * nums.length; i++) { int j = 0; product = 1; while (j < nums.length) { if (j
+	 * != i) product *= nums[j]; j++; } result.add(product); }
+	 * System.out.println(result); }
+	 */
+
+	public int[] productExceptSelf(int[] nums) {
+		int n = nums.length;
+		int[] res = new int[n];
+		res[0] = 1;
+		for (int i = 1; i < n; i++) {
+			res[i] = res[i - 1] * nums[i - 1];
+		}
+		int right = 1;
+		for (int i = n - 1; i >= 0; i--) {
+			res[i] *= right;
+			right *= nums[i];
+		}
+		return res;
+	}
+
+	public void topKFrequent(int k) {
+		int[] nums = { 1, 1, 1, 2, 2, 3 };
+		Map<Integer, Integer> map = new HashMap<>();
+		while (map.size() < k) {
+			
+		}
+	}
+
 	public static void main(String[] args) {
 		Solution solution = new Solution();
 		solution.toLowerCase();
@@ -409,6 +460,12 @@ public class Solution {
 		solution.missingNumber();
 		solution.createBinaryTree();
 		solution.intersect();
+		solution.isHappy(19);
+		int[] b = { 1, 2, 3, 4 };
+		int[] r = solution.productExceptSelf(b);
+		for (int i = 0; i < r.length; i++) {
+			System.out.print(r[i] + ",");
+		}
 	}
 
 }

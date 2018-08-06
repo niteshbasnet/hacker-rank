@@ -289,7 +289,7 @@ public class GenericTests {
 		Map<Integer, Integer> frequencyMap = new HashMap<Integer, Integer>();
 
 		for (int n : nums) {
-//			frequencyMap.put(n, frequencyMap.getOrDefault(n, 0) + 1);
+			// frequencyMap.put(n, frequencyMap.getOrDefault(n, 0) + 1);
 		}
 
 		for (int key : frequencyMap.keySet()) {
@@ -493,10 +493,10 @@ public class GenericTests {
 	}
 
 	public static TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-		if (root.getKey() > p.getKey() && root.getKey() > q.getKey()) {
-			return lowestCommonAncestor(root.getRight(), p, q);
-		} else if (root.getKey() < p.getKey() && root.getKey() < q.getKey()) {
-			return lowestCommonAncestor(root.getLeft(), p, q);
+		if (root.key > p.key && root.key > q.key) {
+			return lowestCommonAncestor(root.left, p, q);
+		} else if (root.key < p.key && root.key < q.key) {
+			return lowestCommonAncestor(root.left, p, q);
 		} else {
 			return root;
 		}
